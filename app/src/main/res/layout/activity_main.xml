@@ -57,6 +57,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.723" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/signIn"
         android:layout_width="163dp"
@@ -83,9 +89,5 @@
         app:layout_constraintVertical_bias="0.894"
         android:onClick="Register"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

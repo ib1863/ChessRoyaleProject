@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127842760409",
+    "project_id": "chessroyale-de268",
+    "storage_bucket": "chessroyale-de268.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127842760409:android:e1c1686aca66d22f8130c8",
+        "android_client_info": {
+          "package_name": "com.example.chessroyale"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm-27817qUw0W3yZSO1rqIqLkhABcEWSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
