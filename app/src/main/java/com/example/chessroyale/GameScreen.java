@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +17,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class GameScreen extends AppCompatActivity {
 
+    private ChessBoard chessBoard;
     FirebaseAuth auth;
+
     Button button;
     FirebaseUser user;
     TextView textView;
@@ -27,6 +32,7 @@ public class GameScreen extends AppCompatActivity {
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
         user = auth.getCurrentUser();
+        TableLayout chessBoard = findViewById(R.id.chessboard);
         if(user == null){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -49,5 +55,8 @@ public class GameScreen extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
+
 }

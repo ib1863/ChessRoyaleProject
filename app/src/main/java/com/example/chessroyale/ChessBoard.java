@@ -1,9 +1,18 @@
 package com.example.chessroyale;
 
+import android.content.Context;
+import android.media.Image;
+import android.view.View;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.Toast;
+
 class ChessBoard implements ChessRules {
     private Piece[][] board;
-    public ChessBoard(){
 
+    public ChessBoard(){
     }
 
     public boolean isMoveValid(Move move){
@@ -20,4 +29,9 @@ class ChessBoard implements ChessRules {
     public boolean isSelfCheck(){
         return false;
     }
+
+
+
+
 }
+
