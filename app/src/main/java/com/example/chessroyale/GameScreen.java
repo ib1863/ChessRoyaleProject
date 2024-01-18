@@ -2,6 +2,8 @@ package com.example.chessroyale;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -810,12 +812,27 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
     void setColorAtAllowedPosition(ArrayList<Coordinates> list){
 
-        for(int i=0; i<list.size(); i++){
-            if(Board[list.get(i).getX()][list.get(i).getY()].getPiece() == null){
-                DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].setBackgroundResource(R.color.colorPositionAvailable);
-            }else{
-                DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].setBackgroundResource(R.color.colorDanger);
-            }
+        for (int i = 0; i < list.size(); i++) {
+            if (Board[list.get(i).getX()][list.get(i).getY()].getPiece() == null) {
+                // Get the original background of the view
+                Drawable originalBackground = DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].getBackground();
+
+                // Create a LayerDrawable with the original background and red margin drawable
+                Drawable[] layers = {originalBackground, getResources().getDrawable(R.drawable.dot)};
+                LayerDrawable layerDrawable = new LayerDrawable(layers);
+
+                // Set the LayerDrawable as the background for the view
+                DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].setBackground(layerDrawable);
+            } else {
+
+                Drawable originalBackground = DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].getBackground();
+
+                // Create a LayerDrawable with the original background and red margin drawable
+                Drawable[] layers = {originalBackground, getResources().getDrawable(R.drawable.green_corners)};
+                LayerDrawable layerDrawable = new LayerDrawable(layers);
+
+                // Set the LayerDrawable as the background for the view
+                DisplayBoardBackground[list.get(i).getX()][list.get(i).getY()].setBackground(layerDrawable);            }
         }
     }
 
