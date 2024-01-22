@@ -727,36 +727,6 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void undo(View v){
-        if(numberOfMoves>0) {
-
-            for(int g=0;g<8;g++){
-                for(int h=0;h<8;h++){
-                    if(LastMoves.get(numberOfMoves-1)[g][h].getPiece()==null){
-                        Board[g][h].setPiece(null);
-                    }else{
-                        Board[g][h].setPiece(LastMoves.get(numberOfMoves-1)[g][h].getPiece());
-                    }
-                }
-            }
-            numberOfMoves--;
-
-            setBoard();
-            for(int i=0;i<8;i++){
-                for(int j=0;j<8;j++){
-                    if((i+j)%2==0){
-                        DisplayBoardBackground[i][j].setBackgroundResource(R.color.colorBoardDark);
-                    }else{
-                        DisplayBoardBackground[i][j].setBackgroundResource(R.color.colorBoardLight);
-                    }
-                }
-            }
-            isKingInDanger();
-            FirstPlayerTurn = !FirstPlayerTurn;
-            game_over.setVisibility(View.INVISIBLE);
-        }
-    }
-
     public void pawnChoice(View v){
         int x = v.getId();
         if(v.getId() == R.id.pawn_queen)
@@ -868,11 +838,11 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
                     for (int x=0;x<List.size();x++){
                         if(Board[List.get(x).getX()][List.get(x).getY()].getPiece() instanceof King){
 
-                            if((List.get(x).getX()+List.get(x).getY())%2==0){
-                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardDark);
-                            }else{
-                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardLight);
-                            }
+//                            if((List.get(x).getX()+List.get(x).getY())%2==0){
+//                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardDark);
+//                            }else{
+//                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardLight);
+//                            }
 
                             if(Board[i][j].getPiece().isWhite() != Board[List.get(x).getX()][List.get(x).getY()].getPiece().isWhite()){
                                 DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorKingInDanger);
