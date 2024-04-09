@@ -77,7 +77,7 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
     Piece wPawn6;
     Piece wPawn7;
     Piece wPawn8;
-
+     Button sign_out;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,9 +91,23 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
         game_over = (TextView)findViewById(R.id.game_over1);
         pawn_choices = (LinearLayout)findViewById(R.id.pawn_chioces);
+        sign_out = (Button)findViewById(R.id.signout_button);
 
         game_over.setVisibility(View.INVISIBLE);
         pawn_choices.setVisibility(View.INVISIBLE);
+        sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences settings = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("stayConnect", false);
+                editor.commit();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initializeBoard() {
@@ -837,13 +851,6 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
                     for (int x=0;x<List.size();x++){
                         if(Board[List.get(x).getX()][List.get(x).getY()].getPiece() instanceof King){
-
-//                            if((List.get(x).getX()+List.get(x).getY())%2==0){
-//                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardDark);
-//                            }else{
-//                                DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorBoardLight);
-//                            }
-
                             if(Board[i][j].getPiece().isWhite() != Board[List.get(x).getX()][List.get(x).getY()].getPiece().isWhite()){
                                 DisplayBoardBackground[List.get(x).getX()][List.get(x).getY()].setBackgroundResource(R.color.colorKingInDanger);
                             }
@@ -869,4 +876,9 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         }
         isKingInDanger();
     }
+
+
+
 }
+
+
